@@ -4,37 +4,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title></title>
-  </head>
+    </head> 
+  
   <body>
-    <form action="Ex6.php" method="post">
-<table width="600" border="0" align="center">
-<tr>
-      <td colspan="2">
-      <div align="center"><h2>โปรแกรมคำนวณหาค่าดัชนีมวลกาย(BMI)</h2></div></td>
-  </tr>
-    <tr>
-      <td width="200"><div align="right">น้ำหนัก : </div></td>
-      <td width="212"><input type="text" name="weight" size="20" maxlength="100" />กิโลกรัม</td>
-    </tr>
-    <tr>
-      <td><div align="right">ส่วนสูง : </div></td>
-      <td><input type="text" name="height" size="20" maxlength="100" value="" />ซ.ม.</td>
-    </tr>     
-    <tr>
-      <td colspan="2"> <div align="center"><input type="submit" value="คำนวณ" /></div></td>
-    </tr>
-    <tr>
-      <td colspan="2" style="font-size:14px; color:#F0000;" align="center"></td>
-    </tr>
-  </table>
-<div align="center"></div>
+    <div class="container">
+        <h2 class="pt-3">โปรแกรมคำนวณหาค่าดัชนีมวลกาย(BMI)</h2>
+        <form class="row pt-3 g-3" method="GET" action="Ex6.php">
+            <div class="col-auto">
+              <label for="weight" class="visually-hidden">น้ำหนัก</label>
+              <input type="text"  class="form-control"  placeholder="น้ำหนัก"
+              id="weight" name="weight" value="">
+            </div>
+            <div class="col-auto">
+              <label for="height" class="visually-hidden">ส่วนสูง</label>
+              <input type="text"  class="form-control"  placeholder="ส่วนสูง"
+              id="height" name="height" value="">
+            </div>
+            
+            <div class="col-auto">
+              <button type="submit" value="submit" name="submit" class="btn btn-primary mb-3">คำนวณ</button>
+            </div>
+          </form>
+    </div>
 
-      <?php
-  $weight=$_POST['weight'];
-  $height=$_POST ['height'] ;
-  $height=$height/100;
-  $bmi=$weight/($height*$height);
+  
+<div class="container">
+
+<?php
+  $weight=$_GET['weight'];
+  $height=$_GET['height'] ;
+  if ($weight<>"" && $height<>"")
+  $bmi = $weight/(($height/100)*($height/100));
+  
   if($bmi<=18.50){
        $c="น้ำหนักน้อย / ผอม";
        $s="มากกว่าคนปกติ";
@@ -51,12 +52,23 @@
        $c="อ้วนมาก / โรคอ้วนระดับ 3";
        $s="อันตรายระดับ 3";   
   }
-   ?>
-   <p align="center">
-   <b>BMI : </b><?php echo $bmi;?> bmi<br /><br />
-   <b>อยู่ในเกณท์ : </b><?php echo $c;?><br /><br />
-   <b>ภาวะเสี่ยงต่อโรค : </b><?php echo $s;?>
-   </p>   
 
-  </head>
-  <body>
+
+  echo "<div class='alert alert-primary ' role='alert' >
+   ค่า BMI {$bmi} <br>อยู่ในเกณท์ {$c} <br>ภาวะเสี่ยงต่อโรค {$s} </div>";
+  
+  ?>
+
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!doctype html>
+<html lang="en">
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title></title>
+    </head> 
